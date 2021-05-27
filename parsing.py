@@ -19,7 +19,10 @@ def parsing():
 def filter(text_):
     for i in text_:
         text_[text_.index(i)] = i.text
-    return text_[:20]
+    return text_
 
-            
-parsing()
+data = parsing()
+titles = []
+for i, title in enumerate(data):
+    if i.split(' ')[0] == 'Статья':
+        titles.append(i)
