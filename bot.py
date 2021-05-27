@@ -1,6 +1,6 @@
 import telebot
 from telebot import types
-from .parsing import parsing
+from parsing import parsing
 from decouple import config
 
 bot = telebot.TeleBot(config('TOKEN'))
@@ -31,7 +31,7 @@ def inline(c):
         bot.delete_message(chat_id, message_id)
     if c.data=='see':
         data = parsing()    #parsing
-        for new in data:
-            bot.send_message(chat_id, new)
+        data = '\n'.join(data)
+        bot.send_message(chat_id, data)
         
 bot.polling()
